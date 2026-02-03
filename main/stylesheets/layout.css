@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(#333, #101010);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 4000px;
+}
+section {
+  margin: 5vw 0;
+  padding: 0 2vw;
+}
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header h1 {
+  font-family: 'Rubik 80s Fade', system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10vw;
+  display: flex;
+  color: #eee;
+}
+#header span:hover {
+  animation: shakeLetter 0.5s infinite linear;
+  display: block;
+}
+#flipCards {
+  display: flex;
+  justify-content: space-between;
+}
+.flipCard {
+  width: 24%;
+  height: 20vw;
+  perspective: 1000px;
+  background-color: transparent;
+}
+.flipCardWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+.flipCard:hover .flipCardWrapper {
+  transform: rotateY(180deg);
+}
+.flipCardFront p {
+  font-size: 2vw;
+  text-align: center;
+}
+.flipCardFront {
+  background-color: #222;
+}
+.flipCardFront,
+.flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 1vw 0.5vw #10101097;
+  color: #eee;
+  border-radius: 2vw;
+}
+.flipCardBack {
+  transform: rotateY(180deg);
+}
+.flipCardBack.red {
+  background: radial-gradient(#b40000, #700000);
+}
+.flipCardBack.blue {
+  background: radial-gradient(#003fb4, #002070);
+}
+.flipCardBack.gold {
+  background: radial-gradient(#b48d00, #705800);
+}
+.flipCardBack.purple {
+  background: radial-gradient(#7200b4, #520070);
+}
+
+.progressWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.progressBar {
+  width: 90%;
+  height: 4vw;
+  background-color: #222;
+  box-shadow: 0 4px 0.5vw 0.5vw #10101097;
+  border-radius: 2vw;
+}
+.progress {
+  height: 100%;
+  width: 0;
+  background: radial-gradient(#295ad5, #003fb4);
+  box-shadow: 0 0 0.2vw 0.2vw #003fb4;
+  border-radius: 2vw;
+  opacity: 0;
+}
+.progressButton {
+  border-radius: 2vw;
+  height: 4vw;
+  width: 8%;
+  background: radial-gradient(#0240dd, #003fb4);
+  box-shadow: 0 0 0.2vw 0.2vw #003fb4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6vw;
+  color: white;
+  cursor: pointer;
+}
+.progressNumber {
+  color: #eee;
+  position: absolute;
+  font-size: 1.6vw;
+  top: 1.4vw;
+  right: 1.4vw;
+}
+
+#modalWindowSection {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: #33333360;
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modalWindow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 1vw 0.5vw #10101097;
+  background-color: #222;
+  color: #eee;
+  border-radius: 2vw;
+  width: 30%;
+  height: 20vw;
+  font-size: 1.6vw;
+}
+.hidden {
+  display: none;
+}
+#drawSVG {
+  position: fixed;
+  top: 1vw;
+  left: 1vw;
+}
