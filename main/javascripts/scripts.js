@@ -1,6 +1,18 @@
 moveProgressBar()
 // hideModalWindow()
 drawSVG()
+getRandomImg()
+
+function getRandomImg() {
+  let button = document.querySelector('.randomImgButton')
+  let image = document.querySelector('.randomSection img')
+
+  button.addEventListener('click', () => {
+    let randomNumber = Math.floor(Math.random() * (8 - 1 + 1) + 1)
+
+    image.src = `images/smeshariki/smesharik${randomNumber}.webp`
+  })
+}
 
 function drawSVG() {
   let star = document.querySelector('.svgLine')
