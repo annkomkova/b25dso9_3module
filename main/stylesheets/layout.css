@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  /* cursor: none; */
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -7,15 +8,31 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   height: 4000px;
+  /* cursor: none; */
 }
 section {
   margin: 5vw 0;
   padding: 0 2vw;
 }
+
+#cursor {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  position: absolute;
+  z-index: 5;
+  animation: cursorColor 5s linear infinite;
+  mix-blend-mode: difference;
+}
+#cursor.hover {
+  border-radius: 0;
+}
+
 #header {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: url('../images/cursor/cursor-1.png'), auto;
 }
 #header h1 {
   font-family: 'Rubik 80s Fade', system-ui;
@@ -40,6 +57,9 @@ section {
   height: 20vw;
   perspective: 1000px;
   background-color: transparent;
+  cursor:
+    url('../images/cursor/cursor-2.png') 12 12,
+    auto;
 }
 .flipCardWrapper {
   position: relative;
@@ -184,4 +204,148 @@ section {
 }
 .randomSection img {
   width: 100%;
+}
+
+.changeImage {
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 1vw 0.5vw #10101097;
+  background-color: #222;
+  color: #eee;
+  border-radius: 2vw;
+  margin: 5vw auto;
+  position: relative;
+}
+.imageBox {
+  width: 20vw;
+  height: 20vw;
+  position: relative;
+}
+.imageBoxEl {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: contain;
+  border-radius: 1.6vw;
+  opacity: 0;
+}
+.imageBox0 {
+  background-image: url('../images/blick/0.jpg');
+  opacity: 1;
+}
+.imageBox1 {
+  background-image: url('../images/blick/1.jpg');
+}
+.imageBox2 {
+  background-image: url('../images/blick/2.jpg');
+}
+.imageBox3 {
+  background-image: url('../images/blick/3.jpg');
+}
+.coords {
+  position: absolute;
+  top: 2vw;
+  left: 2vw;
+  font-size: 1vw;
+  color: #eee;
+}
+
+.eyesAndParallax {
+  display: flex;
+  justify-content: space-around;
+}
+.eyes,
+.parallax {
+  width: 48%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  border-radius: 2vw;
+  background-color: #212121;
+  box-shadow: 0 4px 1vw 0.5vw #10101097;
+  padding: 1.2vw;
+  font-size: 1.6vw;
+  color: #eee;
+  position: relative;
+}
+.eye {
+  width: 4vw;
+  height: 4vw;
+  border: 0.4vw solid #666;
+  position: relative;
+  border-radius: 70% 0 / 70%;
+  transform: rotate(45deg);
+}
+.dot {
+  width: 1.3vw;
+  height: 1.3vw;
+  border-radius: 100%;
+  background-color: #666;
+  position: absolute;
+  transform-origin: 50% 125%;
+  top: 8%;
+  left: 40%;
+}
+
+.circle {
+  background-color: #000;
+  background: url('https://setka.design/images/web/sphere.png') 50%;
+  background-size: contain;
+  border-radius: 100%;
+  filter: saturate(0) brightness(0.7);
+  transition: transform 0.1s;
+  position: absolute;
+}
+.circle:nth-of-type(1) {
+  width: 10vw;
+  height: 10vw;
+  top: 70%;
+  left: 75%;
+}
+.circle:nth-of-type(2) {
+  width: 20vw;
+  height: 20vw;
+  top: 42%;
+  left: 40%;
+}
+.circle:nth-of-type(3) {
+  width: 3vw;
+  height: 3vw;
+  top: 3%;
+  left: 90%;
+}
+.circle:nth-of-type(4) {
+  width: 6vw;
+  height: 6vw;
+  top: 15%;
+  left: 5%;
+}
+.circle:nth-of-type(5) {
+  width: 4vw;
+  height: 4vw;
+  top: 70%;
+  left: 35%;
+}
+.circle:nth-of-type(6) {
+  width: 10vw;
+  height: 10vw;
+  top: 5%;
+  left: 30%;
+}
+.circle:nth-of-type(7) {
+  width: 2vw;
+  height: 2vw;
+  top: 80%;
+  left: 10%;
+}
+.circle:nth-of-type(8) {
+  width: 8vw;
+  height: 8vw;
+  top: 40%;
+  left: 37%;
 }

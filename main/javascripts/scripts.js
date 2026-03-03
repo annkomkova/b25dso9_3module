@@ -2,6 +2,123 @@ moveProgressBar()
 // hideModalWindow()
 drawSVG()
 getRandomImg()
+changeImageByCursor()
+// setCursor()
+eyesAnimation()
+parallaxCircles()
+
+function parallaxCircles() {
+  let section = document.querySelector('.parallax')
+  let circles = document.querySelectorAll('.circle')
+
+  window.addEventListener('scroll', () => {
+    let rect = section.getBoundingClientRect()
+
+    let progress =
+      (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
+
+    let p = Math.max(0, Math.min(1, progress))
+
+    let moveY = (p - 0.5) * 400
+    let moveX = (p - 0.5) * 100
+    let scale = 1 + p * 0.3
+
+    circles.forEach((circle) => {
+      circle.style.transform = `translate(${moveX}px, ${-moveY}px) scale(${scale})`
+    })
+  })
+}
+
+function eyesAnimation() {
+  let dots = document.querySelectorAll('.dot')
+
+  document.addEventListener('mousemove', (event) => {
+    dots.forEach((dot) => {
+      let rect = dot.getBoundingClientRect()
+
+      let dotX = rect.left + rect.width / 2
+      let dotY = rect.top + rect.height / 2
+
+      let dX = event.clientX - dotX
+      let dY = event.clientY - dotY
+
+      let angle = Math.atan2(dY, dX)
+
+      let deg = angle * (180 / Math.PI)
+
+      dot.style.transform = `rotate(${deg}deg)`
+    })
+  })
+}
+
+function setCursor() {
+  let cursor = document.querySelector('#cursor')
+  let box = document.querySelector('.imageBox')
+
+  document.addEventListener('mousemove', (event) => {
+    let x = event.pageX
+    let y = event.pageY
+
+    cursor.style.cssText = `top: ${y}px; left: ${x}px;`
+  })
+
+  box.addEventListener('mouseover', () => {
+    cursor.classList.add('hover')
+  })
+  box.addEventListener('mouseout', () => {
+    cursor.classList.remove('hover')
+  })
+}
+
+function changeImageByCursor() {
+  let x = document.querySelector('.XCoord')
+  let y = document.querySelector('.YCoord')
+  let box = document.querySelector('.imageBox')
+  let section = document.querySelector('.changeImage')
+  let body = document.querySelector('.bodyInfo')
+
+  document.addEventListener('mousemove', (event) => {
+    let cursorX = event.pageX
+    let cursorY = event.pageY
+
+    x.innerHTML = `X: ${cursorX}`
+    y.innerHTML = `Y: ${cursorY}`
+
+    let bodySizeX = document.documentElement.clientWidth
+    let bodySizeY = document.documentElement.clientHeight
+
+    let halfBodySizeX = parseInt(bodySizeX / 2)
+    let halfBodySizeY = parseInt(bodySizeY / 2)
+
+    body.innerHTML = `ширина: ${bodySizeX}; высота: ${bodySizeY}`
+
+    let img0 = document.querySelector('.imageBox0')
+    let img1 = document.querySelector('.imageBox1')
+    let img2 = document.querySelector('.imageBox2')
+    let img3 = document.querySelector('.imageBox3')
+
+    if (cursorX < halfBodySizeX && cursorY < halfBodySizeY) {
+      img0.style.opacity = '1'
+    } else {
+      img0.style.opacity = '0'
+    }
+    if (cursorX > halfBodySizeX && cursorY < halfBodySizeY) {
+      img1.style.opacity = '1'
+    } else {
+      img1.style.opacity = '0'
+    }
+    if (cursorX > halfBodySizeX && cursorY > halfBodySizeY) {
+      img2.style.opacity = '1'
+    } else {
+      img2.style.opacity = '0'
+    }
+    if (cursorX < halfBodySizeX && cursorY > halfBodySizeY) {
+      img3.style.opacity = '1'
+    } else {
+      img3.style.opacity = '0'
+    }
+  })
+}
 
 function getRandomImg() {
   let button = document.querySelector('.randomImgButton')
