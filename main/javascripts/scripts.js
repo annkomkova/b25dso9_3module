@@ -6,6 +6,30 @@ changeImageByCursor()
 // setCursor()
 eyesAnimation()
 parallaxCircles()
+scrollFrames()
+
+function scrollFrames() {
+  let body = document.querySelector('body')
+  let container = document.querySelector('.sliderContainer')
+  let slider = document.querySelector('.slider')
+  let frames = document.querySelectorAll('.slider img')
+
+  let totalFrames = frames.length
+
+  window.addEventListener('scroll', () => {
+    let rect = body.getBoundingClientRect()
+    let vh = window.innerHeight
+
+    let progress = (vh - rect.top) / (vh + rect.height)
+    let p = Math.max(0, Math.min(1, progress))
+
+    let frame = Math.floor(p * (totalFrames - 1))
+
+    let percent = -(frame * 100)
+
+    slider.style.marginLeft = `${percent}%`
+  })
+}
 
 function parallaxCircles() {
   let section = document.querySelector('.parallax')
